@@ -1,0 +1,32 @@
+{
+  "platform": "rk3568",
+  "quantization": "FP16",
+  "description": "V28.8: 全灰度(MODE 1)。车道 G640 灰度 + 红绿灯灯箱(v2 纯红绿域) + 导航6类 + 五类场景 + 交警手势分类。交警分支改由专用手势分类模型判定(左转绿箭头/直行红箭头/other 拒识)，箭头仍只有一个，FPGA 据此识别交警模式；门槛 左转 conf>=0.95、直行 conf>=0.90，连续 2 轮确认，1 轮退出。V28.8 决策模型回到每轮调用(scene-every 1, traffic/nav max_hold 0)——两轮一调用会让缓存场景标签错路由，导致红绿灯三个箭头判断全错。灯箱过滤=长边滑动窗口颜色集中度 + 行内高度统计。二值采集通道与 A768 已删除。",
+  "models": {
+    "G640_rk3568_fp16.rknn": {
+      "size_bytes": 3424246,
+      "sha256": "a59e419e93422225436995b20bf5901703afd6e961ad10a0839e0e00c0dbe11b",
+      "purpose": "车道v2 灰度 640x360（主车道模型）"
+    },
+    "cls_v2yrg3_rk3568_fp16.rknn": {
+      "size_bytes": 196909,
+      "sha256": "b58fd3842082297ba77738f883c5040b60db3e37a2dd957983b5b0161a0bb4e6",
+      "purpose": "交警手势分类 96x96（左转/直行/other 拒识）；输入 NHWC uint8 RGB，归一化烘在图内；FP16 不做量化"
+    },
+    "housing_3568_fp16.rknn": {
+      "size_bytes": 8196675,
+      "sha256": "bc5d9a905896040295d1ae2da5505c4c1c690cbd3da1cd77893605d7aea22805",
+      "purpose": "红绿灯灯箱 v2 纯红绿域(单类,只出框) 768x1280；输入/输出契约与 v1 相同，解码无需改动"
+    },
+    "merged5gray_rk3568_fp16.rknn": {
+      "size_bytes": 8084344,
+      "sha256": "299db494c828fcbd746b2fe35582e3e7c6fcf7da4f93dd082ac1f88e0989adc3",
+      "purpose": "五类场景(单输出) 1024x1024"
+    },
+    "nav6_720_rk3568_fp16.rknn": {
+      "size_bytes": 8331907,
+      "sha256": "df2806d182d9122f269834712d77aee91f0b9e194598276f3debf4a3f7d9afb3",
+      "purpose": "导航6类 方向×距离位数 720x1280 (单次推理)"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-02",
+  "project": "prj/drive_system.pds",
+  "scope": "Copied submission folder; static dependency and hash check only",
+  "input_reference_count": 171,
+  "missing_input_count": 0,
+  "all_inputs_match_verified_original": true,
+  "design_inputs_unchanged_during_document_update": true,
+  "full_build_rerun": false,
+  "new_hardware_test": false,
+  "existing_build_date": "2026-10-31",
+  "existing_timing_summary": "All Constraints Met",
+  "bitstream": "artifacts/bitstream/top_dual_ov5640_hdmi.sbit",
+  "bitstream_sha256": "77E7FE8B7BA57F0A21D3A7ED3AF14972FAF7AADA4A7620AC75CE1A2E0E51EAC0",
+  "changed_files": [
+    "README.md",
+    "modelsim.ini",
+    "tools/requirements.txt"
+  ],
+  "remarks": [
+    "Removed obsolete legacy folder references from README",
+    "ModelSim work mapping now relative; deleted stale voice_test mapping",
+    "Historical PCAP and audio files are external inputs, not part of repository",
+    "Tool and board versions, controls, UDP protocol, audio map, reproduction steps and verification limits documented"
+  ]
+}

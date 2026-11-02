@@ -1,0 +1,28 @@
+# Pango build outputs; retain prj/ipcore because it contains required source code.
+/prj/compile/
+/prj/constraint_check/
+/prj/device_map/
+/prj/generate_bitstream/
+/prj/generate_netlist/
+/prj/place_route/
+/prj/report_power/
+/prj/report_timing/
+/prj/synthesize/
+/prj/log/
+/prj/logbackup/
+/prj/temp_projects/
+/prj/ip_backup/
+/prj/source/constraint_backup/
+/prj/impl.tcl
+# Simulator and Python caches
+/tmp/
+/work/
+/sim/mode_build/
+/sim/tb/work/
+__pycache__/
+*.pyc
+*.wlf
+*.vcd
+*.log
+*.lock
+/transcript
